@@ -1,0 +1,32 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyArgumentEqualDefaultInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ignoredPackages">
+        <value>
+          <list size="18">
+            <item index="0" class="java.lang.String" itemvalue="google-cloud-bigquery" />
+            <item index="1" class="java.lang.String" itemvalue="scipy" />
+            <item index="2" class="java.lang.String" itemvalue="alembic" />
+            <item index="3" class="java.lang.String" itemvalue="data-science-utilities" />
+            <item index="4" class="java.lang.String" itemvalue="coolblue-utilities" />
+            <item index="5" class="java.lang.String" itemvalue="google-cloud-storage" />
+            <item index="6" class="java.lang.String" itemvalue="numpy" />
+            <item index="7" class="java.lang.String" itemvalue="pyasn1" />
+            <item index="8" class="java.lang.String" itemvalue="coolblue-gcbakery" />
+            <item index="9" class="java.lang.String" itemvalue="sqlalchemy" />
+            <item index="10" class="java.lang.String" itemvalue="sqlparse" />
+            <item index="11" class="java.lang.String" itemvalue="pandas" />
+            <item index="12" class="java.lang.String" itemvalue="paramiko" />
+            <item index="13" class="java.lang.String" itemvalue="pytz" />
+            <item index="14" class="java.lang.String" itemvalue="dataset" />
+            <item index="15" class="java.lang.String" itemvalue="google-cloud-core" />
+            <item index="16" class="java.lang.String" itemvalue="jsonschema" />
+            <item index="17" class="java.lang.String" itemvalue="google-auth" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
