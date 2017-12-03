@@ -18,8 +18,8 @@ def plot_bounding_boxes(image_file, bounding_boxes):
         plt.plot([x, x + width], [y + height, y + height], available_colors[i])
 
 if __name__ == '__main__':
-    with open('data/train_labels.p') as f:
+    with open('input/train_bounding_boxes.p') as f:
         d = pickle.load(f)
 
     bboxes = d['1273.png']
-    plot_bounding_boxes('data/train/1273.png', bboxes)
+    plot_bounding_boxes('input/train/1273.png', bboxes)

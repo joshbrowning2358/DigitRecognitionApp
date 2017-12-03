@@ -5,9 +5,9 @@ import numpy as np
 import seaborn as sns
 from sklearn.cluster import KMeans
 
-with open('data/train_bounding_boxes.p', 'rb') as f:
+with open('input/train_bounding_boxes.p', 'rb') as f:
     bounding_boxes = pickle.load(f)
-with open('data/extra_bounding_boxes.p', 'rb') as f:
+with open('input/extra_bounding_boxes.p', 'rb') as f:
     bounding_boxes = pickle.load(f)
 
 labels = []

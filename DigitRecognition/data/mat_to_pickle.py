@@ -132,6 +132,6 @@ def run(file_name):
     print(len(data))
 
 if __name__ == "__main__":
-    run('train/digitStruct.mat')
-    run('test/digitStruct.mat')
-    run('extra/digitStruct.mat')
+    run('input/train/digitStruct.mat')
+    run('input/test/digitStruct.mat')
+    run('input/extra/digitStruct.mat')
