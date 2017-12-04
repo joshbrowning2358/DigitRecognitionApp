@@ -31,7 +31,10 @@ sns.distplot(heights)
 # Clustering the height and width gives clusters with aspect ratios all very close to 0.5
 clustering_model = KMeans(n_clusters=3)
 clustering_model.fit(np.transpose(np.vstack([widths, heights])))
-clustering_model.cluster_centers_
+centers = clustering_model.cluster_centers_
+
+with open('input/3_anchor_boxes.p', 'wb') as f:
+    pickle.dump(centers, f)
 
 # Clustering aspect ratios directly gives different centers; maybe this is the best approach?
 clustering_model = KMeans(n_clusters=3)

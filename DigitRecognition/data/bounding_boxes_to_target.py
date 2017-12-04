@@ -13,6 +13,7 @@ def bounding_boxes_to_target(bounding_boxes, anchor_boxes, image_size, grid_rows
     truth boxes.
     :param bounding_boxes: List of bounding boxes [(target number, x position, y position, width, height)
     :param anchor_boxes: List of anchor box dimensions
+    :param image_size: Size of image as (width, height)
     :param grid_rows: Number of rows; grid will be grid_rows x grid_rows
     :return: The target tensor
     """
@@ -21,23 +22,23 @@ def bounding_boxes_to_target(bounding_boxes, anchor_boxes, image_size, grid_rows
     target = np.zeros((grid_rows, grid_rows, len(anchor_boxes) * length_of_full_target))
     anchor_boxes_used = np.zeros((grid_rows, grid_rows, len(anchor_boxes)))
 
-    for box in bounding_boxes:
-        label, x, y, width, height = box
+    for bounding_box in bounding_boxes:
+        label, x, y, width, height = bounding_box
         x_grid_coord = get_index_in_range(x + width/2, image_size[0], grid_rows)
         y_grid_coord = get_index_in_range(y + height/2, image_size[1], grid_rows)
 
-        available_anchor_boxes = [(index, box) for index, box, avail in
+        available_anchor_boxes = [(index, a_box) for index, a_box, avail in
                                   zip(range(len(anchor_boxes)), anchor_boxes,
                                             anchor_boxes_used[x_grid_coord, y_grid_coord, :])
                                   if avail == 0]
-        anchor_box_sub_index = get_anchor_box_index([box for index, box in available_anchor_boxes], (width, height))
+        anchor_box_sub_index = get_anchor_box_index([a_box for index, a_box in available_anchor_boxes], (width, height))
         anchor_box_index = available_anchor_boxes[anchor_box_sub_index][0]
         anchor_boxes_used[x_grid_coord, y_grid_coord, anchor_box_index] = 1
 
         start = anchor_box_index * length_of_full_target
         end = (anchor_box_index + 1) * length_of_full_target
         label_dummy = [0] * NUM_CLASSES
-        label_dummy[label] = 1
+        label_dummy[label % 10] = 1  # For some reason, '0' is labelled as 10
         target[y_grid_coord, x_grid_coord, start:end] = [1, x / image_size[0], y / image_size[1],
                                                          width / image_size[0], height / image_size[1]] + label_dummy
 
@@ -69,12 +70,8 @@ def intersection_over_union(box_1, box_2):
 
 if __name__ == '__main__':
     import cPickle as pickle
-    from scipy import misc
 
-    with open('input/train_bounding_boxes.p') as f:
+    with open('../../input/train_bounding_boxes.p') as f:
         d = pickle.load(f)
 
-    # d['1234.png']
-    # img = misc.imread('train/1234.png')
-    # img.shape
 
